@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebSite.Models.OrderItem>
+
+@{
+    ViewBag.Title = "OrderItem";
+    Layout = "~/Views/Shared/_lk.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>Детаи заказа</h2>
+    </div>
+    <div class="panel-body">
+        <div>
+            <h4>Заказ №@Model.Last().OrderId</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                
+                @foreach (var m in Model)
+                {
+                    
+                    <dt>
+                        Позиция @m.OrderItemId
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => m.ProductName) X @Html.DisplayFor(model => m.Quantity) шт.
+                    </dd>
+
+                    
+                }
+            </dl>
+        </div>
+        <p>
+
+            @Html.ActionLink("Назад к списку товаров", "Order")
+        </p>
+</div>
+</div>

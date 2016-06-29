@@ -1,0 +1,382 @@
+﻿@model WebSite.Models.AllModels
+
+@{
+    ViewBag.Title = "Админ-панель";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div id="sum_box" class="row mbl">
+    <div class="col-sm-6 col-md-3">
+        <div class="panel profit db mbm">
+            <div class="panel-body">
+                <p class="icon">
+                    <i class="icon fa fa-shopping-cart"></i>
+                </p>
+                <h4 class="value">
+                    <span data-counter="" data-start="10" data-end="50" data-step="1" data-duration="0">
+                    </span><span>@Model.Orders.Where(c => c.StatusOrder == true).Where(y=>y.SolveOrder==true).Count()</span>
+                </h4>
+                <p class="description">
+                    Продано продуктов
+                </p>
+                <div class="progress progress-sm mbn">
+                    <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 80%;" class="progress-bar progress-bar-success">
+                        <span class="sr-only">80% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel income db mbm">
+            <div class="panel-body">
+                <p class="icon">
+                    <i class="icon fa fa-money"></i>
+                </p>
+                <h4 class="value">
+                    <span>@Model.Orders.Where(c=>c.StatusOrder==true).Where(y => y.SolveOrder == true).Sum(x=>x.TotalSum)</span><span> руб</span>
+                </h4>
+                <p class="description">
+                   Получено прибыли
+                </p>
+                <div class="progress progress-sm mbn">
+                    <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 60%;" class="progress-bar progress-bar-info">
+                        <span class="sr-only">60% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel task db mbm">
+            <div class="panel-body">
+                <p class="icon">
+                    <i class="icon fa fa-signal"></i>
+                </p>
+                <h4 class="value">
+                    <span>@Model.Orders.Where(c => c.StatusOrder == true).Where(y => y.SolveOrder == true).Count()</span>
+                </h4>
+                <p class="description">
+                    Обработано заказов
+                </p>
+                <div class="progress progress-sm mbn">
+                    <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 50%;" class="progress-bar progress-bar-danger">
+                        <span class="sr-only">50% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel visit db mbm">
+            <div class="panel-body">
+                <p class="icon">
+                    <i class="icon fa fa-group"></i>
+                </p>
+                <h4 class="value">
+                    <span>@Model.Customers.Count()</span>
+                </h4>
+                <p class="description">
+                    Клиентов
+                </p>
+                <div class="progress progress-sm mbn">
+                    <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                         style="width: 70%;" class="progress-bar progress-bar-warning">
+                        <span class="sr-only">70% Complete (success)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul id="homeTabs" class="nav nav-tabs">
+    <li class="active">
+        <a href="#new_user" data-toggle="tab"><i class="fa fa-user"></i>Добавить нового клиента</a>
+    </li>
+    <li class=""><a href="#new_product" data-toggle="tab"><i class="fa fa-tag"></i>Добавить продукт</a>
+    </li>
+    <li class="dropdown"><a href="#" id="homeTabsDrop1" class="dropdown-toggle" data-toggle="dropdown"><strong>Последние</strong> <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="homeTabsDrop1">
+            <li><a href="#latest_users" tabindex="-1" data-toggle="tab">Клиенты</a></li>
+            <li><a href="#latest_products" tabindex="-1" data-toggle="tab">продукты</a></li>
+        </ul>
+    </li>
+</ul>
+
+    <div id="homeTabsContent" class="tab-content">
+        <div class="tab-pane fade active in" id="new_user">
+            @using (Html.BeginForm("ClientEdit", "Administrator"))
+            {  @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.customer.CustomerId)
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <h4 class="underline">Контактная информация</h4>
+                             <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control required email" id="Email1" name="Email" placeholder="Введите email">
+                              </div>
+                            <div class="form-group">
+                                <label for="">Телефон</label>
+                                <input type="tel" class="form-control required" id="Phone" name="Phone" placeholder="Введите телефон">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <h4 class="underline">Информация о клиенте</h4>
+                            <div class="form-group">
+                                <label for="exampleInputName">Имя и фамилия</label>
+                                <input type="text" title="Введите имя и фамилию клиента!" class="form-control required" id="Name" name="Name" placeholder="Введите имя">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Адрес</label>
+                                <input type="text" class="form-control required" id="Adres" name="Adres" placeholder="Введите адрес" >
+                           </div>
+                            <div class="form-group">
+                                <label for="exampleInputAddress">Город</label>
+                                @Html.DropDownListFor(x => x.customer.City, new SelectList(new[] { "Прокопьевск", "Киселевск", "Новокузнецк" }), new { @class = "form-control required" })
+                                @Html.ValidationMessageFor(model => model.customer.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="pull-right btn-large h5a-btn btn btn-primary"><i class="fa fa-save"></i> Сохранить нового клиента</button>
+                 </div>
+            </div>
+            }
+        </div>
+
+    <div class="tab-pane fade" id="new_product">
+        @using (Html.BeginForm("TovarEdit", "Administrator", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="box">
+                        <h4 class="underline">Общая информация</h4>
+                        <div class="form-group">
+                            <label for="exampleInputProdName">Наименование</label>
+                            <select class="form-control required" id="Category" name="Category">
+                                @foreach (var c in Model.Categories)
+                                {
+                                    <option>@c.Category_Name</option>
+                                }
+
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputCode">
+                                <label>Изображение товара</label>
+                                <small>
+                                    <a role="button" class="popover-test" title="Загружайте картинки в формате .PNG без фона. Чтобы изображения выглядили на фоне web-элементов адекватно." data-placement="right" data-content="Description must be descriptive. Really descriptive." data-original-title="Product Description">
+                                        <i class="fa fa-question-circle"></i> Help
+                                    </a>
+                                </small>
+                            </label>
+                            @*Html.DropDownListFor(x => x.Dimension, new SelectList(new[] { "кг", "г", "л","мл" }), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Dimension, "", new { @class = "text-danger" })*@
+
+                            
+
+                            <input type="file" name="Image" onchange='$("#upload-file-info").html($(this).val());' />
+                            <span class='label label-info' id="upload-file-info"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="box">
+                        <h4 class="underline">Детальная информация</h4>
+                        <div class="form-group">
+                            <label for="exampleItems">Объем (масса)</label><small>
+    <a role="button" class="popover-test" title="Дробные значения вводить через запятую, а не через точку. Если вы введете 1.5, то товар не создастся. Правильно будет 1,5" data-placement="right" data-content="Description must be descriptive. Really descriptive." data-original-title="Product Description">
+        <i class="fa fa-question-circle"></i> Help
+    </a>
+</small>
+                            <input type="text" class="form-control required number" id="Volume" name="Volume" placeholder="в кг или л" step="0.05">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleBarcode">Цена</label>
+                            <input type="number" class="form-control required number" id="Prie" name="Price" placeholder="Введите цену за едеиницу продукта">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-inline">
+                                <label for="sale">
+                                    Акционный товар
+                                    <input type="checkbox" class="form-control" title="Акционный товар" id="HOT" name="HOT">
+
+                                </label>
+                            </div>
+                        </div>
+                      
+
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+          
+                <button type="submit" class="pull-right btn-large h5a-btn btn btn-primary"><i class="fa fa-save"></i>Создать продукт</button>
+            </div>
+        </div>
+        }
+        </div>
+
+    <div class="tab-pane fade" id="latest_users">
+        <h4>Последнеи клиенты</h4><div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+            <a href="#" class="thumbnail"><img src="http://placekitten.com/200/150" class="img-responsive"></a>
+            <div class="caption">
+                <h4>A label</h4>
+                <p class="responsive">Sweet cotton candy pastry.</p>
+                <p>
+                    <a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a>
+                    <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="http://placekitten.com/202/150" class="img-responsive">
+            </a>
+        <div class="caption">
+            <h4>A label</h4>
+            <p class="responsive">Sweet cotton candy pastry.</p>
+            <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+         </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3"><a href="#" class="thumbnail"><img src="http://placekitten.com/201/150" class="img-responsive"></a>
+            <div class="caption">
+                <h4>A label</h4>
+                <p class="responsive">Sweet cotton candy pastry.</p>
+                <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a>
+                <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+            </div></div>
+        <div class="col-xs-3 col-sm-3 col-md-3">
+                <a href="#" class="thumbnail"><img src="http://placekitten.com/204/150" class="img-responsive"></a>
+                <div class="caption">
+                <h4>A label</h4><p class="responsive">Sweet cotton candy pastry.</p>
+                <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+            </div></div></div></div>
+    <div class="tab-pane fade" id="latest_products">
+           <h4>Последние добавленые продукты</h4>
+      
+            <div class="row">
+                @if (Model.Tovars.Count() >= 4)
+            {
+                int i = 0;
+                foreach (var t in Model.Tovars.OrderByDescending(x => x.Tovar_ID))
+                {
+                    i++;
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            @if (t.Pict == null)
+                            {
+                                <a href="#" class="thumbnail"><img height="200"  src="http://placehold.it/200x150/dddddd/ffffff.jpg" class="img-responsive"></a>
+                            }
+                            else
+                            {
+                                <a href="#"><img height="200" class="img-responsive" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
+                            }
+                            <div class="caption">
+                                <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            </div>
+                        </div>
+                        if (i >= 4) { break; }
+
+                    }
+                }
+                else
+                {
+                    foreach (var t in Model.Tovars)
+                    {
+                        <div class="col-xs-3 col-sm-3 col-md-3">
+                            @if (t.Pict == null)
+                            {
+                                <a href="#" class="thumbnail"><img src="http://placehold.it/200x150/dddddd/ffffff.jpg" class="img-responsive"></a>
+                            }
+                            else
+                            {
+                                <a href="#"><img height="200" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
+                            }
+                            <div class="caption">
+                                <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            </div>
+                        </div>
+                    }
+                }
+        </div></div></div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="mbxl">Колонка новостей</h2>
+
+        <div class="row">
+@if (Model.News.Count() >= 4)
+{
+    int i = 0;
+            foreach (var n in Model.News)
+            {
+                i++;
+                <div class="col-lg-3">
+                    <div class="member-team">
+                        <img class="img-responsive" src="@Url.Action("GetImage", "New", new { n.id })" width="100%" alt="заголовок" />
+
+                        <h3>
+                            @n.Header
+                            <small>новости компании</small>
+                        </h3>
+                        <p>@n.Description</p>
+                        <ul class="social-icons list-unstyled list-inline mbl mtl">
+                            <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+        if (i >= 4) { break; }
+    }
+
+}
+else
+{
+    foreach (var n in Model.News)
+    {
+       
+        <div class="col-lg-3">
+            <div class="member-team">
+                <img class="img-responsive" src="@Url.Action("GetImage", "New", new { n.id })" width="100%" alt="заголовок" />
+
+                <h3>
+                    @n.Header
+                    <small>новости компании</small>
+                </h3>
+                <p>@n.Description</p>
+                <ul class="social-icons list-unstyled list-inline mbl mtl">
+                    <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
+                    <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    }
+}
+
+        </div>
+
+
+
+    </div>
+</div>
