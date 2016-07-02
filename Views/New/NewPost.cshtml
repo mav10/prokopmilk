@@ -38,7 +38,7 @@
         <h2>@Model.news.Header</h2>
         <div class="col-lg-6">
             <p>
-                @Model.news.Text
+              @(new HtmlString(Model.news.Text))
             </p>
            
         </div>
