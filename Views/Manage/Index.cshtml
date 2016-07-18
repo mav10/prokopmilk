@@ -108,3 +108,67 @@
 
     <p>Сайт находится на этапе тестирования, поэтому функционал доступен чатсично(только основные функции). Приносим свои извинения за предоставленые неудобства.</p>
 </div>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="mbxl">Колонка новостей</h2>
+        <a href=@Url.Action("index", "New",null)> <small>другие новости компании</small></a>
+        <div class="row">
+            @if (Model.news.Count() >= 4)
+            {
+                int i = 0;
+                foreach (var n in Model.news)
+                {
+                    i++;
+                    <div class="col-lg-3">
+                        <div class="member-team">
+                            <img class="img-responsive" src="@Url.Action("GetImage", "New", new { n.id })" width="100%" alt="заголовок" />
+
+                            <h3>
+                                @n.Header
+                                <small>новости компании</small>
+                            </h3>
+                            <p>@n.Description</p>
+                            <ul class="social-icons list-unstyled list-inline mbl mtl">
+                                <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    if (i >= 4) { break; }
+                }
+
+            }
+            else
+            {
+                foreach (var n in Model.news)
+                {
+
+                    <div class="col-lg-3">
+                        <div class="member-team">
+                            <img class="img-responsive" src="@Url.Action("GetImage", "New", new { n.id })" width="100%" alt="заголовок" />
+
+                            <h3>
+                                @n.Header
+                                <small>новости компании</small>
+                            </h3>
+                            <p>@n.Description</p>
+                            <ul class="social-icons list-unstyled list-inline mbl mtl">
+                                <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
+                                <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                }
+            }
+
+        </div>
+
+
+
+    </div>
+</div>

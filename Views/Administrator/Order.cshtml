@@ -44,38 +44,44 @@
                                         <th>
                                             Номер закаа
                                         </th>
-                                        <th>
-                                            Клиент
-                                        </th>
+                                       
                                         <th>
                                             Сумма заказа
                                         </th>
                                         <th>
                                             Дата заказа
                                         </th>
+                                        <th>Детали</th>
+                                        <th>Клиент</th>
                                         <th>
                                             Статус заказа
                                         </th>
                                         <th></th>
                                     </tr>
-
-                                    @foreach (var item in Model)
-            {
+                                    
+                                    @foreach (var item in Model )
+                                       {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.OrderId)
+                                                @item.OrderId
+                                            </td>
+                                           
+                                            <td>
+                                                @item.TotalSum
+                                            </td>
+                                            <td>
+                                                @item.PurchaseDate
+                                            </td>
+                                            <td>
+                                                
+                                                @Html.ActionLink("Позиций:"+ item.OrderItems.Sum(nt => nt.Quantity), "OrderItem", new { item.OrderId })
+                                               
+                                                
                                             </td>
                                             <td>
 
-                                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                                                @Html.ActionLink(item.Customer.Name,"Customer", new {item.Customer.CustomerId})
                                             </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TotalSum)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PurchaseDate)
-                                            </td>
-
                                             @if (item.StatusOrder)
                                             {
                                                 if (item.SolveOrder)
@@ -156,36 +162,43 @@
                                         <th>
                                             Номер закаа
                                         </th>
-                                        <th>
-                                            Клиент
-                                        </th>
+
                                         <th>
                                             Сумма заказа
                                         </th>
                                         <th>
                                             Дата заказа
                                         </th>
+                                        <th>Детали</th>
+                                        <th>Клиент</th>
                                         <th>
                                             Статус заказа
                                         </th>
-                                       
+                                        <th></th>
                                     </tr>
 
                                     @foreach (var item2 in Model.Where(x => x.StatusOrder == true).Where(y => y.SolveOrder == true))
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item2.OrderId)
+                                                @item2.OrderId
+                                            </td>
+
+                                            <td>
+                                                @item2.TotalSum
+                                            </td>
+                                            <td>
+                                                @item2.PurchaseDate
                                             </td>
                                             <td>
 
-                                                @Html.DisplayFor(modelItem => item2.Customer.Name)
+                                                @Html.ActionLink("Позиций:" + item2.OrderItems.Sum(nt => nt.Quantity), "OrderItem", new { item2.OrderId })
+
+
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item2.TotalSum)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item2.PurchaseDate)
+
+                                                @item2.Customer.Name
                                             </td>
 
                                             @if (item2.StatusOrder)
@@ -250,15 +263,15 @@
                                         <th>
                                             Номер закаа
                                         </th>
-                                        <th>
-                                            Клиент
-                                        </th>
+
                                         <th>
                                             Сумма заказа
                                         </th>
                                         <th>
                                             Дата заказа
                                         </th>
+                                        <th>Детали</th>
+                                        <th>Клиент</th>
                                         <th>
                                             Статус заказа
                                         </th>
@@ -269,19 +282,25 @@
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item3.OrderId)
+                                                @item3.OrderId
+                                            </td>
+
+                                            <td>
+                                                @item3.TotalSum
+                                            </td>
+                                            <td>
+                                                @item3.PurchaseDate
                                             </td>
                                             <td>
 
-                                                @Html.DisplayFor(modelItem => item3.Customer.Name)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item3.TotalSum)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item3.PurchaseDate)
-                                            </td>
+                                                @Html.ActionLink("Позиций:" + item3.OrderItems.Sum(nt => nt.Quantity), "OrderItem", new { item3.OrderId })
 
+
+                                            </td>
+                                            <td>
+
+                                                @item3.Customer.Name
+                                            </td>
                                             @if (item3.StatusOrder)
                     {
                         if (item3.SolveOrder)
@@ -377,17 +396,17 @@
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item4.OrderId)
+                                                @item4.OrderId
                                             </td>
                                             <td>
 
-                                                @Html.DisplayFor(modelItem => item4.Customer.Name)
+                                                @item4.Customer.Name
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item4.TotalSum)
+                                                @item4.TotalSum
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item4.PurchaseDate)
+                                                @item4.PurchaseDate
                                             </td>
 
                                             @if (item4.StatusOrder)
