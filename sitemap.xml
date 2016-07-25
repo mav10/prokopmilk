@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://prokopmilk.apphb.com/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Catalog</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/About</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Contact</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Cart/Index</loc>
+  <priority>0.30</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Account/Login</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale</loc>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Prodaction</loc>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/LetClient</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Account/Register</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/MakeOrder</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/New/Index</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Молоко</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Сыр</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Сметана</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Творог</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Сливки</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Масло</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=Сыворотка</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Cart/Checkout</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Account/ForgotPassword</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Account/Login?ReturnUrl=%2Fmanage%2F</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Account/Login?ReturnUrl=%2FManage%2FOrder</loc>
+  <priority>0.45</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/New/NewPost/1</loc>
+  <priority>0.55</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/Home/Sale/?category=0</loc>
+  <priority>0.71</priority>
+</url>
+<url>
+  <loc>http://prokopmilk.apphb.com/New</loc>
+  <priority>0.61</priority>
+</url>
+</urlset>
