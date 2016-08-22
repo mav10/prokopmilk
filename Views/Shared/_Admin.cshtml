@@ -20,9 +20,62 @@
         <link type="text/css" rel="stylesheet" href="~/Contentnew/zabuto_calendar.min.css">
         <link type="text/css" rel="stylesheet" href="~/Contentnew/pace.css">
         <link type="text/css" rel="stylesheet" href="~/Contentnew/jquery.news-ticker.css">
-    
+    <script>
+    $(function () {
+    $('#analitica').highcharts({
+    chart: {
+    type: 'areaspline'
+    },
+    title: {
+    text: 'Статистика посещений по данным Yandex-метрика'
+    },
+    legend: {
+    layout: 'vertical',
+    align: 'left',
+    verticalAlign: 'top',
+    x: 150,
+    y: 100,
+    floating: true,
+    borderWidth: 1,
+    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },
+    xAxis: {
+        
+        categories: ["категрия1", "категория 2", "rfntujhbz3", "категория 4", "категория 4", "категория 4", "категория 4"],
+    plotBands: [{ // visualize the weekend
+    from: 4.5,
+    to: 6.5,
+    color: 'rgba(68, 170, 213, .2)'
+    }]
+    },
+    yAxis: {
+    title: {
+    text: 'Fruit units'
+    }
+    },
+    tooltip: {
+    shared: true,
+    valueSuffix: ' units'
+    },
+    credits: {
+    enabled: false
+    },
+    plotOptions: {
+    areaspline: {
+    fillOpacity: 0.5
+    }
+    },
+    series: [{
+    name: 'John',
+    data: [3, 4, 3, 5, 4, 10, 12]
+    }, {
+    name: 'Jane',
+    data: [1, 3, 4, 3, 3, 5, 4]
+    }]
+    });
+    });
 
-    
+    </script>
 
 
     <title>@ViewBag.Title</title>
@@ -119,15 +172,15 @@ _tmr.push({id: "2798137", type: "pageView", start: (new Date()).getTime()});
 
                     <ul class="nav navbar navbar-top-links navbar-right ">
                         <li class="dropdown ">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">3</span></a>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green"></span></a>
 
                         </li>
                         <li class="dropdown">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">7</span></a>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange"></span></a>
 
                         </li>
                         <li class="dropdown">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow">8</span></a>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-tasks fa-fw"></i><span class="badge badge-yellow"></span></a>
 
                         </li>
                         <li class="dropdown topbar-user">
@@ -137,7 +190,7 @@ _tmr.push({id: "2798137", type: "pageView", start: (new Date()).getTime()});
                                 <li><a href="#"><i class="fa fa-calendar"></i>Календарь</a></li>
                                 <li class="divider"></li>
                                 
-                                <li><a href="Login.html"><i class="fa fa-key"></i>Выйти</a></li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-key"></i>Выйти</a></li>
                             </ul>
                         </li>
 
@@ -301,6 +354,8 @@ _tmr.push({id: "2798137", type: "pageView", start: (new Date()).getTime()});
         <script src="~/Scripts/zabuto_calendar.min.js"></script>
         <script src="~/Scripts/index.js"></script>
         <!--LOADING SCRIPTS FOR CHARTS-->
+
+         <script src="~/Scripts/highchart.js"></script>
         <script src="~/Scripts/highcharts.js"></script>
         <script src="~/Scripts/data.js"></script>
         <script src="~/Scripts/drilldown.js"></script>
@@ -310,7 +365,7 @@ _tmr.push({id: "2798137", type: "pageView", start: (new Date()).getTime()});
         <script src="~/Scripts/charts-highchart-more.js"></script>
         <!--CORE JAVASCRIPT-->
         <script src="~/Scripts/main.js"></script>
-
+    <div id="flotTip" style="display: none; position: absolute; z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap; left: 694px; top: 2443px; background: rgb(255, 255, 255);"></div>
    
    
 

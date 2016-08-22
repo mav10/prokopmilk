@@ -297,7 +297,7 @@
                             <a href="#"><img height="200" class="img-responsive" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
                         }
                         <div class="caption">
-                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Button</a></p>
                         </div>
                     </div>
                     if (i >= 4) { break; }
@@ -521,7 +521,19 @@
         </div>
         </div>
 </div>
-
+<div class="row">
+    <div class="col-md-pull-9">
+        @foreach (var item in Model.stats)
+        {
+            <p>Визитеры @item.Visitors </p>
+            <p>Посещений @item.Visits</p>
+            
+            <p>Новые Визитеры @item.NewVisitors</p>
+            <p>Просмотров страниц @item.PageViews </p>
+            <p>День @item.Day</p>
+        }
+    </div>
+</div>
 
 
 
