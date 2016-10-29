@@ -86,16 +86,18 @@ _tmr.push({id: "2798137", type: "pageView", start: (new Date()).getTime()});
                     <span class="icon-bar"></span>
                 </button>
                
-                @Html.ActionLink("Молочная ферма", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+               
             </div>
+           
+            @Html.ActionLink("Молочная ферма", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Каталог", "Catalog", "Home")</li>
+                    <li>@Html.ActionLink("Магазин", "Sale", "Home")</li>
                     <li>@Html.ActionLink("О производителе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
                    
                 </ul>
-           
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
