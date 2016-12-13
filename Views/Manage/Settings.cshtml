@@ -7,7 +7,7 @@
 @model WebSite.Models.SettingsViewModel
 
 
-
+<link href="~/Content/bootstrap-social.css" rel="stylesheet">
 @if (!ViewBag.StatusMessage.Equals(""))
 {
 <div class="alert alert-success">
@@ -153,10 +153,10 @@
                                             <label class="col-sm-3 control-label">Пароль</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-4"><input type="password" placeholder="@Model.HasPassword" value="@Model.HasPassword" class="form-control" /></div>
+                                                    <div class="col-xs-4"><input type="password" value="@Model.HasPassword" class="form-control" /></div>
                                                     @if (Model.HasPassword)
                                                     {
-                                                        <label class="btn btn-primary "> @Html.ActionLink("Измените свой текущий пароль", "ChangePassword")</label>
+                                                        <label class="btn btn-default "> @Html.ActionLink("Измените свой текущий пароль", "ChangePassword")</label>
                                                     }
                                                     else
                                                     {
@@ -172,23 +172,32 @@
                                             <label class="col-sm-3 control-label">Имя и фамилия</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-9"><input type="text" placeholder="@Model.name" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="text" value="@Model.name" class="form-control" /></div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">город</label>
+                                            <label class="col-sm-3 control-label">Город</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-4">
                                                         <select class="form-control">
                                                             <option>@Model.city</option>
-                                                            <option>Прокопьевск</option>
-                                                            <option>Киселевск</option>
-                                                            <option>Новокузнецк</option>
+                                                            @if (!Model.city.Equals("Прокопьевск"))
+                                                            {
+                                                                <option>Прокопьевск</option>
+                                                            }
+                                                            @if (!Model.city.Equals("Киселевск"))
+                                                            {
+                                                                <option>Киселевск</option>
+                                                            }
+                                                            @if (!Model.city.Equals("Новокузнецк"))
+                                                            {
+                                                                <option>Новокузнецк</option>
+                                                            }
 
-                                                        </select>
+                                                          </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,7 +207,7 @@
                                             <label class="col-sm-3 control-label">Адрес доставки</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-9"><input type="text" placeholder="@Model.adres" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="text" value="@Model.adres" class="form-control" /></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,10 +222,10 @@
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     
-                                                    <div class="col-xs-9"><input type="text" placeholder="@(Model.PhoneNumber ?? "Отсутсвует")" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="text" value="@(Model.PhoneNumber ?? "Отсутсвует")" class="form-control" /></div>
                                                    
 
-
+                                                    
                                                       
 </div>
 
@@ -227,7 +236,7 @@
     {
                                                     @Html.AntiForgeryToken()
                                                     <br />
-                                                    <label class="btn btn-primary">@Html.ActionLink("Изменить", "AddPhoneNumber")</label>
+                                                    <label class="btn btn-default">@Html.ActionLink("Изменить", "AddPhoneNumber")</label>
                                                     <input type="submit" value="Удалить" class="btn btn-danger" />
                                                     }
 
@@ -243,9 +252,30 @@
                                         <hr />
                                         <h3>Интеграция с соц.сетями</h3>
                                         <div class="form-group">
-                                            @Model.Logins.Count()
-                                            
-                                        </div>
+                                            @foreach (var net in Model.Logins)
+                                            {
+                                                if (net.LoginProvider.Equals("Vkontakte"))
+                                                {
+                                                    <a class="btn btn-block btn-social btn-vk">
+                                                        <span class="fa fa-vk"></span>Войти через VK
+                                                    </a>
+                                                }
+                                                else if (net.LoginProvider.Equals("Facebook"))
+                                                {
+                                                    <a class="btn btn-block btn-social btn-facebook">
+                                                        <span class="fa fa-facebook"></span>Войти через Facebook
+                                                    </a>
+                                                }
+                                                else if (net.LoginProvider.Equals("Odnoklassniki"))
+                                                {
+                                                    <a class="btn btn-block btn-social btn-odnoklassniki">
+                                                        <span class="fa fa-odnoklassniki"></span> Войти через Odnoklassniki
+                                                    </a>
+                                                }
+                                            }
+
+
+</div>
                                         <hr />
                                         <button type="submit" class="btn btn-green btn-block">Сохранить</button>
                                     </form>

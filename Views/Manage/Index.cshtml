@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @model WebSite.Models.IndexViewModel
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 @{
     Layout = "~/Views/Shared/_lk.cshtml";
     ViewBag.Title = "Личный кабинет";
@@ -161,10 +163,10 @@
                             </h3>
                             <p>@n.Description</p>
                             <ul class="social-icons list-unstyled list-inline mbl mtl">
-                                <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://vk.com/share.php?url=http://prokopmilk.apphb.com/New/newpost/@n.id&title=@n.Header Читай подробнее на сайте&description=@n.Description&image=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="vk" class="vk"><i class="fa fa-vk"></i></a></li>
+                                <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=@n.Header Читай подробнее на сайте&p%5Bsummary%5D=DESC&p%5Burl%5D=http://prokopmilk.apphb.com/New/newpost/@n.id&p%5Bimages%5D%5B0%5D=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="http://www.ok.ru/dk?st.cmd=addShare&st.s=1&st._surl=http://prokopmilk.apphb.com/New/newpost/@n.id&st.comments=@n.Header Читай подробнее на сайте" data-hover="tooltip" data-original-title="odnoklassniki" class="odnoklassniki"><i class="fa fa-odnoklassniki"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=[Новости]@n.Header - Молочая Ферма КФХ Васина&url=http://prokopmilk.apphb.com/New/newpost/@n.id" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -187,10 +189,11 @@
                             </h3>
                             <p>@n.Description</p>
                             <ul class="social-icons list-unstyled list-inline mbl mtl">
-                                <li><a href="#" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="google Plus" class="googleplus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="skype" class="skype"><i class="fa fa-skype"></i></a></li>
-                                <li><a href="#" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://vk.com/share.php?url=http://prokopmilk.apphb.com/New/newpost/@n.id&title=@n.Header Читай подробнее на сайте&description=@n.Description&image=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="vk" class="vk"><i class="fa fa-vk"></i></a></li>
+                                <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=@n.Header Читай подробнее на сайте&p%5Bsummary%5D=DESC&p%5Burl%5D=http://prokopmilk.apphb.com/New/newpost/@n.id&p%5Bimages%5D%5B0%5D=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="http://www.ok.ru/dk?st.cmd=addShare&st.s=1&st._surl=http://prokopmilk.apphb.com/New/newpost/@n.id&st.comments=@n.Header Читай подробнее на сайте" data-hover="tooltip" data-original-title="odnoklassniki" class="odnoklassniki"><i class="fa fa-odnoklassniki"></i></a></li>
+                                <li><a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=[Новости]@n.Header - Молочая Ферма КФХ Васина&url=http://prokopmilk.apphb.com/New/newpost/@n.id" data-hover="tooltip" data-original-title="twitter" class="twitter"><i class="fa fa-twitter"></i></a></li>
+
                             </ul>
                         </div>
                     </div>
