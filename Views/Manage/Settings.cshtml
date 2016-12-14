@@ -160,7 +160,8 @@
                                                     }
                                                     else
                                                     {
-                                                        <label class="label-primary">@Html.ActionLink("Создать", "SetPassword")</label>
+                                                      
+                                                        <label class="btn btn-danger">@Html.ActionLink("Создать", "SetPassword")</label>
                                                     }
                                                 </div>
                                             </div>
@@ -257,22 +258,25 @@
                                                 if (net.LoginProvider.Equals("Vkontakte"))
                                                 {
                                                     <a class="btn btn-block btn-social btn-vk">
-                                                        <span class="fa fa-vk"></span>Войти через VK
+                                                        <span class="fa fa-vk"></span>Интегрировванно с VK
                                                     </a>
                                                 }
                                                 else if (net.LoginProvider.Equals("Facebook"))
                                                 {
                                                     <a class="btn btn-block btn-social btn-facebook">
-                                                        <span class="fa fa-facebook"></span>Войти через Facebook
+                                                        <span class="fa fa-facebook"></span>Интегрированго с Facebook
                                                     </a>
                                                 }
                                                 else if (net.LoginProvider.Equals("Odnoklassniki"))
                                                 {
                                                     <a class="btn btn-block btn-social btn-odnoklassniki">
-                                                        <span class="fa fa-odnoklassniki"></span> Войти через Odnoklassniki
+                                                        <span class="fa fa-odnoklassniki"></span>Интегрированно с Odnoklassniki
                                                     </a>
                                                 }
                                             }
+                                            <a href="~/Manage/ManageLogins" class="btn btn-block btn-social">
+                                                <span class="fa fa-address-card"></span> Управленеи соц.сетями
+                                            </a>
 
 
 </div>
