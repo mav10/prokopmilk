@@ -138,42 +138,46 @@
                             </ul>
                             <div id="generalTabContent" class="tab-content">
                                 <div id="tab-edit" class="tab-pane fade in active">
-                                    <form action="#" class="form-horizontal">
+                                    @using (Html.BeginForm("Settings", "Manage", FormMethod.Post))
+                                    {@Html.AntiForgeryToken()
                                         <h3>Настрйоки аккаунта</h3>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Email</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-9"><input type="email" placeholder="@User.Identity.Name" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="email" name="email" value="@Model.Email" class="form-control"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                      
+
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Пароль</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-4"><input type="password" value="@Model.HasPassword" class="form-control" /></div>
+                                                    <div class="col-xs-4"><input type="password" name="HasPassword" value="@Model.HasPassword" class="form-control"/>
+                                                    </div>
                                                     @if (Model.HasPassword)
                                                     {
                                                         <label class="btn btn-default "> @Html.ActionLink("Измените свой текущий пароль", "ChangePassword")</label>
                                                     }
                                                     else
                                                     {
-                                                      
+
                                                         <label class="btn btn-danger">@Html.ActionLink("Создать", "SetPassword")</label>
                                                     }
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                        <hr />
+
+                                        <hr/>
                                         <h3>Настройки личности</h3>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Имя и фамилия</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-9"><input type="text" value="@Model.name" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="text" name="name" value="@Model.name" class="form-control"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -183,7 +187,7 @@
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-4">
-                                                        <select class="form-control">
+                                                        <select name="city" class="form-control">
                                                             <option>@Model.city</option>
                                                             @if (!Model.city.Equals("Прокопьевск"))
                                                             {
@@ -198,7 +202,7 @@
                                                                 <option>Новокузнецк</option>
                                                             }
 
-                                                          </select>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,50 +212,52 @@
                                             <label class="col-sm-3 control-label">Адрес доставки</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    <div class="col-xs-9"><input type="text" value="@Model.adres" class="form-control" /></div>
+                                                    <div class="col-xs-9"><input type="text" name="adres" value="@Model.adres" class="form-control"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                                       
-                                     
-                                    
-                                   
-                                        <hr />
+
+
+
+
+                                        <hr/>
                                         <h3>Контактная информаця</h3>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label">Сот. тел.</label>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
-                                                    
-                                                    <div class="col-xs-9"><input type="text" value="@(Model.PhoneNumber ?? "Отсутсвует")" class="form-control" /></div>
-                                                   
 
-                                                    
-                                                      
-</div>
+                                                    <div class="col-xs-9"><input type="text" name="PhoneNumber" value="@(Model.PhoneNumber ?? "Отсутсвует")" class="form-control"/>
+                                                    </div>
+
+
+
+
+                                                </div>
 
                                                 <div class="row">
-@if (Model.PhoneNumber != null)
-{
-    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-                                                    @Html.AntiForgeryToken()
-                                                    <br />
-                                                    <label class="btn btn-default">@Html.ActionLink("Изменить", "AddPhoneNumber")</label>
-                                                    <input type="submit" value="Удалить" class="btn btn-danger" />
-                                                    }
+                                                    @if (Model.PhoneNumber != null)
+                                                    {
+                                                        
+                                                            <br />
+                                                            <label class="btn btn-default">@Html.ActionLink("Изменить", "AddPhoneNumber")</label>
+                                                            <label class="btn btn-danger">@Html.ActionLink("Удалить", "RemovePhoneNumber")</label>
+                                                            
+                                                        
 
                                                     }
                                                     else
                                                     {
-                                                    <text>[&nbsp;&nbsp;@Html.ActionLink("Добавить", "AddPhoneNumber", new { @class = "btn btn-link" })]</text>
+                                                        <text>[&nbsp;&nbsp;@Html.ActionLink("Добавить", "AddPhoneNumber", new {@class = "btn btn-link"})]</text>
                                                     }
-                                                    </div>
-
                                                 </div>
+
+                                            </div>
                                         </div>
-                                        <hr />
+                                        <hr/>
                                         <h3>Интеграция с соц.сетями</h3>
+                                        @Html.HiddenFor(model => model.Logins)
                                         <div class="form-group">
                                             @foreach (var net in Model.Logins)
                                             {
@@ -279,10 +285,11 @@
                                             </a>
 
 
-</div>
-                                        <hr />
-                                        <button type="submit" class="btn btn-green btn-block">Сохранить</button>
-                                    </form>
+                                        </div>
+                                        <hr/>
+                                        
+                                        <input type="submit" class="btn btn-green btn-block" value="СОхранить"/>
+                                    }
                                 </div>
                                
                             </div>
