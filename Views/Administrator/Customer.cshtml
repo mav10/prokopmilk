@@ -9,7 +9,8 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <link href="/static/css/main.9f2bc916.css" rel="stylesheet" integrity="sha256-27qYXgb2uf2y9wUo/da9noee5ffLHbucFp2lndgb6v4= sha384-U7YFwgljskAxU+eji5rF4Zl5VtwPs9r4uZw8dsLiAOjIHF9HKL2qVjI5hh8DtHuf" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width"/>
     <title>Информация по клиенту:</title>
 </head>
 <body>
@@ -83,123 +84,140 @@
                                 <div id="generalTabContent" class="tab-content">
                                     <div id="tab-edit" class="tab-pane fade in active">
                                         <form action="#" class="form-horizontal">
-                                            <h3>Статистика</h3>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Общая сумма заказов:</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-9"><text>@Model.Orders.Sum(c=>c.TotalSum) руб.</text></div>
+                                        <div >
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                <h3>Статистика</h3>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-6 control-label">Общая сумма заказов:</label>
+                                                    <div class="col-md-6 controls">
+                                                        <div class="row">
+                                                            <div class="col-xs-9"><text>@Model.Orders.Sum(c => c.TotalSum) руб.</text>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-6 control-label">Как часто заказывает:</label>
+                                                    <div class="col-md-6 controls">
+                                                        <div class="row">
+                                                            <div class="col-xs-9"><text># раз в месяц</text>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-6 control-label">Количество заказов:</label>
+                                                    <div class="col-md-6 controls">
+                                                        <div class="row">
+                                                            <div class="col-xs-9"><text>@Model.Orders.Count</text>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-6 control-label">Средняя сумма заказа:</label>
+                                                    <div class="col-md-6 controls">
+                                                        <div class="col-xs-9"><text>@Model.Orders.Average(C => C.TotalSum) руб.</text>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Как часто заказывает:</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-9"><text># раз в месяц</text></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Количество заказов:</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="row">
-                                                        <div class="col-xs-9"><text>@Model.Orders.Count</text></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Средняя сумма заказа:</label>
-                                                <div class="col-sm-9 controls">
-                                                    <div class="col-xs-9"><text>@Model.Orders.Average(C=>C.TotalSum) руб.</text></div>
-                                                </div>
+                                                <div id="root"></div>
+                                                <script type="text/javascript" src="/static/js/main.75b73ae9.js" integrity="sha256-BXRf63S70XwJsrVcWo4KXkRiF0jAXkZOd6BxtnmBxg0= sha384-5daMNlv69J2Tulk9eP/Pxxv/44vNpX8A5rlXT9nKp7IzLh7mXwag0ZTMQCo2dj/V" crossorigin="anonymous"></script>
                                             </div>
                                             
-                                                <hr />
-                                                <h3>Заказы клиента</h3>
-                                                <div class="form-group">
-                                                    <table class="table table-striped table-condensed table-bordered">
+                                        </div>
+                                            <hr/>
+                                            <h3>Заказы клиента</h3>
+                                            <div class="form-group">
+                                                <table class="table table-striped table-condensed table-bordered">
+                                                    <tr>
+                                                        <th>
+                                                            Номер закаа
+                                                        </th>
+
+                                                        <th>
+                                                            Сумма заказа
+                                                        </th>
+                                                        <th>
+                                                            Дата заказа
+                                                        </th>
+                                                        <th>Детали</th>
+                                                        <th>
+                                                            Статус заказа
+                                                        </th>
+
+                                                    </tr>
+                                                    @foreach (var item in Model.Orders)
+                                                    {
                                                         <tr>
-                                                            <th>
-                                                                Номер закаа
-                                                            </th>
+                                                            <td>
+                                                                @item.OrderId
+                                                            </td>
 
-                                                            <th>
-                                                                Сумма заказа
-                                                            </th>
-                                                            <th>
-                                                                Дата заказа
-                                                            </th>
-                                                            <th>Детали</th>
-                                                            <th>
-                                                                Статус заказа
-                                                            </th>
+                                                            <td>
+                                                                @item.TotalSum
+                                                            </td>
+                                                            <td>
+                                                                @item.PurchaseDate
+                                                            </td>
+                                                            <td>
 
-                                                        </tr>
-                                                        @foreach (var item in Model.Orders)
-                                                        {
-                                                            <tr>
-                                                                <td>
-                                                                    @item.OrderId
-                                                                </td>
-
-                                                                <td>
-                                                                    @item.TotalSum
-                                                                </td>
-                                                                <td>
-                                                                    @item.PurchaseDate
-                                                                </td>
-                                                                <td>
-
-                                                                    @Html.ActionLink("Позиций:" + item.OrderItems.Sum(nt => nt.Quantity), "OrderItem", new { item.OrderId })
+                                                                @Html.ActionLink("Позиций:" + item.OrderItems.Sum(nt => nt.Quantity), "OrderItem", new {item.OrderId})
 
 
-                                                                </td>
-                                                                @if (item.StatusOrder)
+                                                            </td>
+                                                            @if (item.StatusOrder)
+                                                            {
+                                                                if (item.SolveOrder)
                                                                 {
-                                                                    if (item.SolveOrder)
-                                                                    {
-                                                                        <td class="text-center">
-                                                                            <p class="text-success"><strong> ВЫПОЛНЕН </strong></p>
-                                                                        </td>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <td class="text-center">
-                                                                            <p class="text-danger"><strong> ОТМЕНЕН </strong></p>
-                                                                        </td>
-                                                                    }
+                                                                    <td class="text-center">
+                                                                        <p class="text-success"><strong> ВЫПОЛНЕН </strong>
+                                                                        </p>
+                                                                    </td>
                                                                 }
                                                                 else
                                                                 {
-                                                                    if (item.SolveOrder)
-                                                                    {
-                                                                        <td class="text-center">
-                                                                            <p class="text-success"><strong>ПРИНЯТ</strong></p>
-
-                                                                        </td>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <td class="text-center">
-                                                                            <p class="text-danger"><strong>НЕВЫПОЛНЕН</strong></p>
-
-                                                                        </td>
-                                                                    }
+                                                                    <td class="text-center">
+                                                                        <p class="text-danger"><strong> ОТМЕНЕН </strong>
+                                                                        </p>
+                                                                    </td>
                                                                 }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (item.SolveOrder)
+                                                                {
+                                                                    <td class="text-center">
+                                                                        <p class="text-success"><strong>ПРИНЯТ</strong>
+                                                                        </p>
+
+                                                                    </td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td class="text-center">
+                                                                        <p class="text-danger"><strong>НЕВЫПОЛНЕН</strong>
+                                                                        </p>
+
+                                                                    </td>
+                                                                }
+                                                            }
 
 
 
 
-                                                            </tr>
-                                                        }
-                                                    </table>
-                                                </div>
+                                                        </tr>
+                                                    }
+                                                </table>
+                                            </div>
 
-                                                <hr />
+                                            <hr/>
 
-</form>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>

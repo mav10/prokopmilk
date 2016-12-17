@@ -239,12 +239,13 @@
                                                 <div class="row">
                                                     @if (Model.PhoneNumber != null)
                                                     {
-                                                        
-                                                            <br />
-                                                            <label class="btn btn-default">@Html.ActionLink("Изменить", "AddPhoneNumber")</label>
-                                                            <label class="btn btn-danger">@Html.ActionLink("Удалить", "RemovePhoneNumber")</label>
-                                                            
-                                                        
+
+                                                        <br />
+                                                        <p>
+                                                            <a href="~/Manage/AddPhoneNumber" class="h5a-btn btn btn-default">Изменить)</a>
+                                                            <a href="~/Manage/RemovePhoneNumber" class="h5a-btn btn btn-danger">Удалить</a>
+                                                        </p>
+
 
                                                     }
                                                     else
@@ -288,7 +289,7 @@
                                         </div>
                                         <hr/>
                                         
-                                        <input type="submit" class="btn btn-green btn-block" value="СОхранить"/>
+                                        <input type="submit" class="btn btn-green btn-block" value="Сохранить"/>
                                     }
                                 </div>
                                

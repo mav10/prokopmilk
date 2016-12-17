@@ -95,11 +95,13 @@
                            
 
                                 @Html.Hidden("Tovar_ID", ITEM.Tovar_ID)
+                            @Html.Hidden("Quantity")
+                            <div class="row">
                                 <input type="number" min="1" class="input-sm" size="2" max="50" step="1" name="Quantity" value="@ITEM.Quantity" />
-                                @Html.Hidden("Quantity")
-                            <button class="btn btn-sm btn-orange pull-right">@Html.ActionLink("Отклонить продукт", "DelProduct", new { ITEM.OrderItemId })</button> 
 
-                          
+                                <a class="btn btn-sm btn-orange pull-right" href="~/Administrator/DelProduct?OrderItmeId=@ITEM.OrderItemId">Отклонить продукт</a>
+
+                            </div>
 
                         </div>
                          

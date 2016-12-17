@@ -4,7 +4,7 @@
     ViewBag.Title = "Админ-панель";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-<link href="/static/css/main.9f2bc916.css" rel="stylesheet" integrity="sha256-27qYXgb2uf2y9wUo/da9noee5ffLHbucFp2lndgb6v4= sha384-U7YFwgljskAxU+eji5rF4Zl5VtwPs9r4uZw8dsLiAOjIHF9HKL2qVjI5hh8DtHuf" crossorigin="anonymous">
+<link href="/static/css/main.9192766d.css" rel="stylesheet" integrity="sha256-ocfr2xHgIeYRIdefDOkTfRaNIyCGn45xUjrMBUqZsRI= sha384-OC5KNiSkJJlnQWcUrhvmA+f+hS2fEn6U8PjvuQvzkXeOgOrX10dUmAM7YXqXYIaY" crossorigin="anonymous">
 <link href="~/Content/bootstrap-social.css" rel="stylesheet">
 <div id="sum_box" class="row mbl">
     <div class="col-sm-6 col-md-3">
@@ -236,46 +236,49 @@
     </div>
 
     <div class="tab-pane fade" id="latest_users">
-        <h4>Последнеи клиенты</h4><div class="row">
+        <h4>Последние клиенты</h4><div class="row">
+    @if (Model.Customers.Count() >= 4)
+            {
+                int i = 0;
+                foreach (var t in Model.Customers.OrderByDescending(x => x.CustomerId))
+                {
+                    i++;
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="#" class="thumbnail"><img src="http://placekitten.com/200/150" class="img-responsive"></a>
+                <a href="#" class="thumbnail"><img src="http://placehold.it/200x150/dddddd/ffffff.jpg" class="img-responsive"></a>
                 <div class="caption">
-                    <h4>A label</h4>
-                    <p class="responsive">Sweet cotton candy pastry.</p>
+                    <h4>@t.Name</h4>
+                    <p class="responsive">г. @t.City сот.@t.Phone</p>
                     <p>
-                        <a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a>
-                        <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a>
+                        <a href="~/Administrator/ClientEdit?CustomerId=@t.CustomerId" class="h5a-btn btn btn-primary btn-sm">Инфо</a>
+                        <a href="~/Administrator/Customer?CustomerId=@t.CustomerId" class="h5a-btn btn btn-default btn-sm">Изменить</a>
                     </p>
                 </div>
             </div>
+            if (i >= 4) { break; }
+
+        }
+    }
+    else
+    {
+        foreach (var t in Model.Customers)
+        {
             <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="#" class="thumbnail">
-                    <img src="http://placekitten.com/202/150" class="img-responsive">
-                </a>
+                <a href="#" class="thumbnail"><img src="http://placehold.it/200x150/dddddd/ffffff.jpg" class="img-responsive"></a>
                 <div class="caption">
-                    <h4>A label</h4>
-                    <p class="responsive">Sweet cotton candy pastry.</p>
-                    <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="#" class="thumbnail"><img src="http://placekitten.com/201/150" class="img-responsive"></a>
-                <div class="caption">
-                    <h4>A label</h4>
-                    <p class="responsive">Sweet cotton candy pastry.</p>
+                    <h4>@t.Name</h4>
+                    <p class="responsive">г. @t.City сот.@t.Phone</p>
                     <p>
-                        <a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a>
-                        <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a>
+                        <a href="~/Administrator/ClientEdit?CustomerId=@t.CustomerId" class="h5a-btn btn btn-primary btn-sm">Инфо</a>
+                        <a href="~/Administrator/Customer?CustomerId=@t.CustomerId" class="h5a-btn btn btn-default btn-sm">Изменить</a>
                     </p>
                 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <a href="#" class="thumbnail"><img src="http://placekitten.com/204/150" class="img-responsive"></a>
-                <div class="caption">
-                    <h4>A label</h4><p class="responsive">Sweet cotton candy pastry.</p>
-                    <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Button</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
-                </div>
-            </div>
+        }
+    }
+           
+
+            
+
         </div>
     </div>
     <div class="tab-pane fade" id="latest_products">
@@ -295,10 +298,10 @@
                         }
                         else
                         {
-                            <a href="#"><img height="200" class="img-responsive" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
+                            <a href="#"><img height="200" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
                         }
                         <div class="caption">
-                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarEdit?Tovar_ID=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Изменить</a></p>
                         </div>
                     </div>
                     if (i >= 4) { break; }
@@ -319,7 +322,7 @@
                             <a href="#"><img height="200" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
                         }
                         <div class="caption">
-                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarEdit?Tovar_ID=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Изменить</a></p>
                         </div>
                     </div>
                 }
@@ -391,16 +394,8 @@
 
 
     </div>
-</div>
-
 
 
     <div id="root"></div>
-    <script type="text/javascript" src="/static/js/main.e83c08c4.js" integrity="sha256-QEi9BtPTOevAVfjZOdHNiKbrPpHZnwAiDwYt156fUUk= sha384-xKBefJz9auq2aCyMsvx83oXADeNZdoLHRhyPoKEer3CAwaZPa0jVO1Ub6h4wiWSi" crossorigin="anonymous"></script>
-
-
-         
-
-
-
-
+    <script type="text/javascript" src="/static/js/main.9559d3d0.js" integrity="sha256-uJ15civlwiKOa0sZL68wYRIsqdhi2Nt0w8+T/pg/9pQ= sha384-5TgYgu1Qw/e12liDQ7qlg2fsL9UykBb5Rdveea+r/2cG8HyblsdDvu0LyZpZyLQN" crossorigin="anonymous"></script>
+</div>

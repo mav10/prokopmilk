@@ -42,7 +42,7 @@
                                 <a href="#"><img height="200"  src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })" ></a>
                             }
                             <div class="caption">
-                                <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                                <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarEdit?Tovar_ID=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Изменить</a></p>
                             </div>
                         </div>
                     if (i >= 4) { break; }
@@ -63,7 +63,7 @@
                            <a href="#" ><img height="200" src="@Url.Action("GetImageTovar", "Administrator", new { t.Tovar_ID })"></a>
                         }
                         <div class="caption">
-                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="#" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="#" class="h5a-btn btn btn-default btn-sm">Button</a></p>
+                            <h4>@t.Category</h4><p class="responsive"></p>Масса: @t.Volume л (кг), цена: @t.Price <p><a href="~/administrator/TovarView?tovar_id=@t.Tovar_ID" class="h5a-btn btn btn-primary btn-sm">Просмотр</a> <a href="~/administrator/TovarEdit?Tovar_ID=@t.Tovar_ID" class="h5a-btn btn btn-default btn-sm">Изменить</a></p>
                         </div>
                     </div> 
                 }
@@ -149,7 +149,7 @@
     </div>
 </div>
         <div class="panel-heading">
-            <h3>Список тваров</h3>
+            <h3>Список товаров</h3>
         </div>
         <table class="table table-striped table-condensed table-bordered">
             <tr>
