@@ -21,7 +21,15 @@
         {
             <tr>
                 <td class="text-left">@line.tovar.Category </td>
-                <td class="text-left">@line.Quantity</td>
+                <td class="text-left">
+               @using (Html.BeginForm("ChangeInCart", "Cart"))
+               {
+                @Html.Hidden("Tovar_ID", line.tovar.Tovar_ID)
+                
+                    <input type="number" min="1" class="input-sm" size="2" max="50" step="1" name="Quantity" onchange="submit()" value="@line.Quantity" />
+               }
+
+                </td>
                 
                 <td class="text-right">@line.tovar.Price.ToString("# руб")</td>
                 <td class="text-right">

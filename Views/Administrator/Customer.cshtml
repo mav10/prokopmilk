@@ -93,7 +93,7 @@
                                                     <label class="col-md-6 control-label">Общая сумма заказов:</label>
                                                     <div class="col-md-6 controls">
                                                         <div class="row">
-                                                            <div class="col-xs-9"><text>@Model.Orders.Sum(c => c.TotalSum) руб.</text>
+                                                            <div class="col-xs-9"><text>@Model.Orders.Where(o=>o.SolveOrder == o.StatusOrder == true).Sum(c => c.TotalSum) руб.</text>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -120,7 +120,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-6 control-label">Средняя сумма заказа:</label>
                                                     <div class="col-md-6 controls">
-                                                        <div class="col-xs-9"><text>@Model.Orders.Average(C => C.TotalSum) руб.</text>
+                                                        <div class="col-xs-9"><text>@Model.Orders.Where(o => o.SolveOrder == o.StatusOrder == true).Average(C => C.TotalSum) руб.</text>
                                                         </div>
                                                     </div>
                                                 </div>

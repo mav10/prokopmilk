@@ -38,7 +38,7 @@
                         <div class="container-fluid">
                             <div class="navbar-header">
                                 <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                                <p class="navbar-brand">Дата публикации: @item.DataPub</p>
+                                <p class="navbar-brand">Дата публикации: @item.DataPub.ToShortDateString()</p>
                                 <ul class="social-icons list-unstyled list-inline mbl mtl">
                                     <li><a href="https://vk.com/share.php?url=http://prokopmilk.apphb.com/New/newpost/@item.id&title=@item.Header Читай подробнее на сайте&description=@item.Description&image=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="vk" class="vk"><i class="fa fa-vk"></i></a></li>
                                     <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=@item.Header Читай подробнее на сайте&p%5Bsummary%5D=DESC&p%5Burl%5D=http://prokopmilk.apphb.com/New/newpost/@item.id&p%5Bimages%5D%5B0%5D=http://prokopmilk.apphb.com/pictures/logo_slogan.jpg" data-hover="tooltip" data-original-title="facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>

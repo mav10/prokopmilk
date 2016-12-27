@@ -60,7 +60,7 @@
     @Html.ActionLink("Назад к списку новостей", "Index")
 </div>
 <p class="text-right">
-    @Model.news.DataPub
+    @Model.news.DataPub.ToShortDateString()
     </p>
 </div>    
 
